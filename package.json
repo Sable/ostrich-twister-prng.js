@@ -1,0 +1,24 @@
+{
+  "name": "ostrich-twister-prng",
+  "version": "1.0.0",
+  "description": "Pre-compiled Mersenne Twister pseudo-random number generator for JavaScript",
+  "main": "ostrich-twister-prng.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sable/ostrich-twister-prng.js.git"
+  },
+  "keywords": [
+    "Mersenne-Twister",
+    "prng",
+    "benchmarking"
+  ],
+  "author": "Erick Lavoie",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Sable/ostrich-twister-prng.js/issues"
+  },
+  "homepage": "https://github.com/Sable/ostrich-twister-prng.js#readme"
+}
