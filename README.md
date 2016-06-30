@@ -1,5 +1,5 @@
 # ostrich-twister-prng.js
-Pre-compiled Mersenne Twister pseudo-random number generator available as an npm javascript package. Generated from http://github.com/Sable/ostrich-twister-prng.
+Pre-compiled Mersenne Twister pseudo-random number generator available as an npm javascript package. Generated using http://github.com/Sable/ostrich-twister-prng.
 
 # Usage
 
