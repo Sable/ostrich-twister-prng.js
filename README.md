@@ -26,3 +26,9 @@ Pre-compiled Mersenne Twister pseudo-random number generator available as an npm
             "destination": { "file": "./twister" }
         }
     ]
+
+Inside the runner file:
+
+    var twister = require('./twister/ostrich-twister-prng.js');
+    console.log(twister.random());
+    
