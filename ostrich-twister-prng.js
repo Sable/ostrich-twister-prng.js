@@ -6032,7 +6032,7 @@ function _genrand_real3() {
  $3 = $2 * 2.3283064365386963E-10;
  return (+$3);
 }
-function _gen_rand() {
+function _ostrich_rand_double() {
  var $0 = 0.0, $1 = 0.0, $x = 0.0, label = 0, sp = 0;
  sp = STACKTOP;
  STACKTOP = STACKTOP + 16|0; if ((STACKTOP|0) >= (STACK_MAX|0)) abort();
@@ -6041,6 +6041,62 @@ function _gen_rand() {
  (+_genrand_real3());
  $1 = $x;
  STACKTOP = sp;return (+$1);
+}
+function _ostrich_rand_matrix($matrix,$row_nb,$col_nb) {
+ $matrix = $matrix|0;
+ $row_nb = $row_nb|0;
+ $col_nb = $col_nb|0;
+ var $0 = 0, $1 = 0, $10 = 0, $11 = 0, $12 = 0, $13 = 0, $14 = 0, $15 = 0, $16 = 0, $17 = 0, $18 = 0, $19 = 0, $2 = 0, $20 = 0, $3 = 0, $4 = 0, $5 = 0, $6 = 0, $7 = 0, $8 = 0;
+ var $9 = 0.0, $col = 0, $row = 0, label = 0, sp = 0;
+ sp = STACKTOP;
+ STACKTOP = STACKTOP + 32|0; if ((STACKTOP|0) >= (STACK_MAX|0)) abort();
+ $0 = $matrix;
+ $1 = $row_nb;
+ $2 = $col_nb;
+ $col = 0;
+ while(1) {
+  $3 = $col;
+  $4 = $2;
+  $5 = ($3|0)<($4|0);
+  if (!($5)) {
+   break;
+  }
+  $row = 0;
+  while(1) {
+   $6 = $row;
+   $7 = $1;
+   $8 = ($6|0)<($7|0);
+   if (!($8)) {
+    break;
+   }
+   $9 = (+_ostrich_rand_double());
+   $10 = $col;
+   $11 = $1;
+   $12 = Math_imul($10, $11)|0;
+   $13 = $row;
+   $14 = (($12) + ($13))|0;
+   $15 = $0;
+   $16 = (($15) + ($14<<3)|0);
+   HEAPF64[$16>>3] = $9;
+   $17 = $row;
+   $18 = (($17) + 1)|0;
+   $row = $18;
+  }
+  $19 = $col;
+  $20 = (($19) + 1)|0;
+  $col = $20;
+ }
+ STACKTOP = sp;return;
+}
+function _ostrich_rand_seed($seed) {
+ $seed = $seed|0;
+ var $0 = 0, $1 = 0, label = 0, sp = 0;
+ sp = STACKTOP;
+ STACKTOP = STACKTOP + 16|0; if ((STACKTOP|0) >= (STACK_MAX|0)) abort();
+ $0 = $seed;
+ $1 = $0;
+ _init_genrand($1);
+ STACKTOP = sp;return;
 }
 function ___errno_location() {
  var $$0 = 0, $0 = 0, $1 = 0, $2 = 0, $3 = 0, $4 = 0, label = 0, sp = 0;
@@ -9785,20 +9841,26 @@ var FUNCTION_TABLE_ii = [b0,___stdio_close];
 var FUNCTION_TABLE_iiii = [b1,b1,___stdout_write,___stdio_seek,b1,___stdio_write,b1,b1];
 var FUNCTION_TABLE_vi = [b2,b2,b2,b2,_cleanup392,b2,b2,b2];
 
-  return { _init_genrand: _init_genrand, _free: _free, _memset: _memset, _malloc: _malloc, _memcpy: _memcpy, _gen_rand: _gen_rand, _fflush: _fflush, ___errno_location: ___errno_location, runPostSets: runPostSets, stackAlloc: stackAlloc, stackSave: stackSave, stackRestore: stackRestore, establishStackSpace: establishStackSpace, setThrew: setThrew, setTempRet0: setTempRet0, getTempRet0: getTempRet0, dynCall_ii: dynCall_ii, dynCall_iiii: dynCall_iiii, dynCall_vi: dynCall_vi };
+  return { _fflush: _fflush, _ostrich_rand_seed: _ostrich_rand_seed, _ostrich_rand_matrix: _ostrich_rand_matrix, _memset: _memset, _malloc: _malloc, _memcpy: _memcpy, _ostrich_rand_double: _ostrich_rand_double, _free: _free, ___errno_location: ___errno_location, runPostSets: runPostSets, stackAlloc: stackAlloc, stackSave: stackSave, stackRestore: stackRestore, establishStackSpace: establishStackSpace, setThrew: setThrew, setTempRet0: setTempRet0, getTempRet0: getTempRet0, dynCall_ii: dynCall_ii, dynCall_iiii: dynCall_iiii, dynCall_vi: dynCall_vi };
 })
 // EMSCRIPTEN_END_ASM
 (Module.asmGlobalArg, Module.asmLibraryArg, buffer);
-var real__init_genrand = asm["_init_genrand"]; asm["_init_genrand"] = function() {
+var real__fflush = asm["_fflush"]; asm["_fflush"] = function() {
 assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
 assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-return real__init_genrand.apply(null, arguments);
+return real__fflush.apply(null, arguments);
 };
 
-var real__free = asm["_free"]; asm["_free"] = function() {
+var real__ostrich_rand_seed = asm["_ostrich_rand_seed"]; asm["_ostrich_rand_seed"] = function() {
 assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
 assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-return real__free.apply(null, arguments);
+return real__ostrich_rand_seed.apply(null, arguments);
+};
+
+var real__ostrich_rand_matrix = asm["_ostrich_rand_matrix"]; asm["_ostrich_rand_matrix"] = function() {
+assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+return real__ostrich_rand_matrix.apply(null, arguments);
 };
 
 var real__malloc = asm["_malloc"]; asm["_malloc"] = function() {
@@ -9807,16 +9869,16 @@ assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it a
 return real__malloc.apply(null, arguments);
 };
 
-var real__gen_rand = asm["_gen_rand"]; asm["_gen_rand"] = function() {
+var real__ostrich_rand_double = asm["_ostrich_rand_double"]; asm["_ostrich_rand_double"] = function() {
 assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
 assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-return real__gen_rand.apply(null, arguments);
+return real__ostrich_rand_double.apply(null, arguments);
 };
 
-var real__fflush = asm["_fflush"]; asm["_fflush"] = function() {
+var real__free = asm["_free"]; asm["_free"] = function() {
 assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
 assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-return real__fflush.apply(null, arguments);
+return real__free.apply(null, arguments);
 };
 
 var real____errno_location = asm["___errno_location"]; asm["___errno_location"] = function() {
@@ -9824,14 +9886,15 @@ assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. w
 assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
 return real____errno_location.apply(null, arguments);
 };
-var _init_genrand = Module["_init_genrand"] = asm["_init_genrand"];
-var _free = Module["_free"] = asm["_free"];
+var _fflush = Module["_fflush"] = asm["_fflush"];
 var runPostSets = Module["runPostSets"] = asm["runPostSets"];
+var _ostrich_rand_seed = Module["_ostrich_rand_seed"] = asm["_ostrich_rand_seed"];
+var _ostrich_rand_matrix = Module["_ostrich_rand_matrix"] = asm["_ostrich_rand_matrix"];
 var _memset = Module["_memset"] = asm["_memset"];
 var _malloc = Module["_malloc"] = asm["_malloc"];
 var _memcpy = Module["_memcpy"] = asm["_memcpy"];
-var _gen_rand = Module["_gen_rand"] = asm["_gen_rand"];
-var _fflush = Module["_fflush"] = asm["_fflush"];
+var _ostrich_rand_double = Module["_ostrich_rand_double"] = asm["_ostrich_rand_double"];
+var _free = Module["_free"] = asm["_free"];
 var ___errno_location = Module["___errno_location"] = asm["___errno_location"];
 var dynCall_ii = Module["dynCall_ii"] = asm["dynCall_ii"];
 var dynCall_iiii = Module["dynCall_iiii"] = asm["dynCall_iiii"];
@@ -10074,6 +10137,19 @@ module.exports = Module;
 // Do not recurse into module and waste all day
 Module.inspect = function() { return '[Module]' }
 
-module.exports.random = module.exports._gen_rand;
-module.exports.seed = module.exports._init_genrand;
+module.exports.random = module.exports._ostrich_rand_double;
+module.exports.seed = module.exports._ostrich_rand_seed;
+module.exports.rand = function (row_nb, col_nb) {
+    if (row_nb === undefined) {
+        return module.exports.random();
+    } else if (col_nb === undefined) {
+        col_nb = row_nb;
+    } 
+
+    var matrix = new Float64Array(row_nb*col_nb);
+    for (var i = 0; i < row_nb*col_nb; ++i) {
+        matrix[i] = module.exports.random()
+    }
+    return matrix
+}
 
