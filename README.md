@@ -32,3 +32,10 @@ Inside the runner file:
     var twister = require('./twister/ostrich-twister-prng.js');
     console.log(twister.random());
     
+# Use as a universal module with requireJS
+
+    requirejs['/path/to/ostrich-twister-prng-UMD.js'](function (prng) {
+    
+    })
+    
+    
