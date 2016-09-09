@@ -35,7 +35,7 @@ Inside the runner file:
 # Use as a universal module with requireJS
 
     requirejs['/path/to/ostrich-twister-prng-UMD.js'](function (prng) {
-    
+        console.log(prng.random());
     })
     
     
